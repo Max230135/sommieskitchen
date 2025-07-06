@@ -191,3 +191,211 @@ footer {
 .contact-form button:hover {
   background-color: #e66100;
 }
+/* Cart Icon */
+.cart-icon {
+  position: relative;
+  margin-left: auto;
+  padding: 0 15px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: 2px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cart-sidebar.show {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.item-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.quantity-btn, .remove-btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.remove-btn {
+  color: #e74c3c;
+}
+
+.cart-total {
+  text-align: right;
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkout-btn:hover {
+  background: #2ecc71;
+}
+
+/* Add to Cart buttons */
+.add-to-cart {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add-to-cart:hover {
+  background: #2980b9;
+}
+
+.price {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #27ae60;
+  font-size: 18px;
+
+  /* Payment Section Styles */
+.payment-section {
+  background: #f9f9f9;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.bank-details {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+
+.bank-details h4 {
+  color: #27ae60;
+  margin-bottom: 15px;
+}
+
+.bank-details p {
+  margin: 8px 0;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+}
+
+.whatsapp-btn i {
+  margin-right: 8px;
+}
+
+/* Payment Options Styling */
+.payment-options {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.payment-method {
+  margin: 10px 0;
+}
+
+.payment-method label {
+  margin-left: 8px;
+}
+
+.delivery-details {
+  padding: 15px;
+}
+
+.delivery-details h4 {
+  margin-bottom: 10px;
+}
+
+#delivery-address {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Highlight selected payment method */
+input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #27ae60;
+}
+}

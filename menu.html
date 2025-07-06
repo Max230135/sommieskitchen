@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Menu - Sommieskitchen</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <!-- Add Font Awesome for cart icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <header class="site-header">
@@ -14,6 +16,11 @@
       <a href="menu.html">Menu</a>
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
+      <!-- Add cart icon with counter -->
+      <a href="#" class="cart-icon" id="cart-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </a>
     </nav>
   </header>
 
@@ -27,41 +34,236 @@
       <img src="images/IMG-20250705-WA0003.jpg" alt="Abacha" />
       <h3>Abacha</h3>
       <p>A classic Eastern Nigerian salad made from shredded cassava.</p>
+      <div class="price">₦3,000</div>
+      <button class="add-to-cart" data-name="Abacha" data-price="3000">Add to Cart</button>
     </div>
 
     <div class="menu-item">
       <img src="images/IMG-20250705-WA0004.jpg" alt="Ncha" />
       <h3>Ncha (Ngo)</h3>
       <p>Spicy oil sauce that pairs perfectly with Abacha and Ugba.</p>
+      <div class="price">₦2,500</div>
+      <button class="add-to-cart" data-name="Ncha (Ngo)" data-price="2500">Add to Cart</button>
     </div>
 
     <div class="menu-item">
       <img src="images/IMG-20250705-WA0006.jpg" alt="Ukwa" />
       <h3>Ukwa</h3>
       <p>Nutritious breadfruit dish, rich in flavor and health benefits.</p>
+      <div class="price">₦4,000</div>
+      <button class="add-to-cart" data-name="Ukwa" data-price="4000">Add to Cart</button>
     </div>
 
     <div class="menu-item">
-  <img src="images/IMG-20250705-WA0013.jpg" alt="Nkwobi" />
-  <h3>Nkwobi</h3>
-  <p>Spiced cow foot dish, served in thick palm oil sauce.</p>
-</div>
+      <img src="images/IMG-20250705-WA0013.jpg" alt="Nkwobi" />
+      <h3>Nkwobi</h3>
+      <p>Spiced cow foot dish, served in thick palm oil sauce.</p>
+      <div class="price">₦7,500</div>
+      <button class="add-to-cart" data-name="Nkwobi" data-price="7500">Add to Cart</button>
+    </div>
 
-<div class="menu-item">
-  <img src="images\IMG-20250705-WA0007.jpg" alt="Isiewu" />
-  <h3>Isiewu</h3>
-  <p>Goat head delicacy, beautifully seasoned in palm oil sauce.</p>
-</div>
+    <div class="menu-item">
+      <img src="images/IMG-20250705-WA0007.jpg" alt="Isiewu" />
+      <h3>Isiewu</h3>
+      <p>Goat head delicacy, beautifully seasoned in palm oil sauce.</p>
+      <div class="price">₦15,000</div>
+      <button class="add-to-cart" data-name="Isiewu" data-price="15000">Add to Cart</button>
+    </div>
 
     <div class="menu-item">
       <div class="placeholder">🥗</div>
       <h3>Ugba</h3>
       <p>Fermented African oil bean salad, best with Ncha or Abacha.</p>
+      <div class="price">₦6,000</div>
+      <button class="add-to-cart" data-name="Ugba" data-price="6000">Add to Cart</button>
     </div>
   </section>
 
+  <!-- Payment Information Section -->
+  <section class="payment-section">
+    <h3>Payment Information</h3>
+    <div class="bank-details">
+      <h4>Bank Transfer Details:</h4>
+      <p><strong>Bank:</strong> GTBank (Guaranty Trust Bank)</p>
+      <p><strong>Account Name:</strong> Sommieskitchen</p>
+      <p><strong>Account Number:</strong> 0715321293</p>
+    </div>
+    <div class="whatsapp-order">
+      <a href="https://wa.me/2348064297207?text=Hi%20Sommieskitchen!%20I'd%20like%20to%20place%20an%20order" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Order via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="close-cart" id="close-cart">×</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <!-- Cart items will be added here dynamically -->
+    </div>
+    
+    <div class="payment-options">
+      <h4>Select Payment Method:</h4>
+      <div class="payment-method">
+        <input type="radio" id="bank-transfer" name="payment" value="Bank Transfer" checked>
+        <label for="bank-transfer">Bank Transfer (GTB: 0715321293)</label>
+      </div>
+      <div class="payment-method">
+        <input type="radio" id="cash-delivery" name="payment" value="Cash on Delivery">
+        <label for="cash-delivery">Cash on Delivery</label>
+      </div>
+      <div class="payment-method">
+        <input type="radio" id="pos" name="payment" value="POS Payment">
+        <label for="pos">POS Payment</label>
+      </div>
+    </div>
+    
+    <div class="delivery-details">
+      <h4>Delivery Information:</h4>
+      <textarea id="delivery-address" placeholder="Enter your delivery address"></textarea>
+    </div>
+    
+    <div class="cart-total">
+      <strong>Total: ₦<span id="cart-total">0</span></strong>
+    </div>
+    <button class="checkout-btn" id="checkout">Confirm Order via WhatsApp</button>
+  </div>
+
   <footer>
-    &copy; 2025 Sommieskitchen. All rights reserved.
+    © 2025 Sommieskitchen. All rights reserved.
   </footer>
+
+  <!-- Add JavaScript for cart functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = [];
+      const cartItemsEl = document.getElementById('cart-items');
+      const cartTotalEl = document.getElementById('cart-total');
+      const cartCountEl = document.querySelector('.cart-count');
+      const cartSidebar = document.getElementById('cart-sidebar');
+      const cartToggle = document.getElementById('cart-toggle');
+      const closeCart = document.getElementById('close-cart');
+      const checkoutBtn = document.getElementById('checkout');
+      
+      // Add to cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+          const name = this.getAttribute('data-name');
+          const price = parseInt(this.getAttribute('data-price'));
+          
+          // Check if item already in cart
+          const existingItem = cart.find(item => item.name === name);
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            cart.push({ name, price, quantity: 1 });
+          }
+          
+          updateCart();
+          cartSidebar.classList.add('show');
+        });
+      });
+      
+      // Toggle cart visibility
+      cartToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        cartSidebar.classList.toggle('show');
+      });
+      
+      closeCart.addEventListener('click', function() {
+        cartSidebar.classList.remove('show');
+      });
+      
+      // Update cart UI
+      function updateCart() {
+        cartItemsEl.innerHTML = '';
+        let total = 0;
+        let count = 0;
+        
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          count += item.quantity;
+          
+          const cartItemEl = document.createElement('div');
+          cartItemEl.className = 'cart-item';
+          cartItemEl.innerHTML = `
+            <div class="item-info">
+              <h4>${item.name}</h4>
+              <p>₦${item.price} x ${item.quantity}</p>
+            </div>
+            <div class="item-total">₦${itemTotal}</div>
+            <div class="item-actions">
+              <button class="quantity-btn minus" data-name="${item.name}">-</button>
+              <button class="quantity-btn plus" data-name="${item.name}">+</button>
+              <button class="remove-btn" data-name="${item.name}">×</button>
+            </div>
+          `;
+          cartItemsEl.appendChild(cartItemEl);
+        });
+        
+        cartTotalEl.textContent = total;
+        cartCountEl.textContent = count;
+        
+        // Add event listeners to new buttons
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const item = cart.find(item => item.name === name);
+            
+            if (this.classList.contains('plus')) {
+              item.quantity++;
+            } else if (this.classList.contains('minus')) {
+              item.quantity = Math.max(1, item.quantity - 1);
+            }
+            
+            updateCart();
+          });
+        });
+        
+        document.querySelectorAll('.remove-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const index = cart.findIndex(item => item.name === name);
+            cart.splice(index, 1);
+            updateCart();
+          });
+        });
+      }
+      
+      // Enhanced Checkout functionality with WhatsApp integration
+      checkoutBtn.addEventListener('click', function() {
+        if (cart.length === 0) {
+          alert('Your cart is empty!');
+          return;
+        }
+        
+        const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+        const deliveryAddress = document.getElementById('delivery-address').value || '[Address Not Provided]';
+        
+        const orderItems = cart.map(item => 
+          `- ${item.name} × ${item.quantity} @ ₦${item.price}`
+        ).join('%0A');
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        
+        let paymentInstructions = '';
+        if (selectedPayment === 'Bank Transfer') {
+          paymentInstructions = '%0A%0APayment Instructions:%0A- Bank: GTBank%0A- Account Name: Sommieskitchen%0A- Account Number: 0715321293';
+        } else if (selectedPayment === 'POS Payment') {
+          paymentInstructions = '%0A%0APayment Method:%0A- I will pay via POS on delivery';
+        } else {
+          paymentInstructions = '%0A%0APayment Method:%0A- I will pay cash on delivery';
+        }
+        
+        const whatsappMessage = `Hi Sommieskitchen!%0A%0AI would like to order:%0A%0A${orderItems}%0A%0ATotal: ₦${total}%0A%0APayment Method: ${selectedPayment}${paymentInstructions}%0A%0ADelivery Address:%0A${deliveryAddress}`;
+        
+        window.open(`https://wa.me/2348064297207?text=${whatsappMessage}`, '_blank');
+      });
+    });
+  </script>
 </body>
 </html>
